@@ -332,14 +332,8 @@ public class MyCursorAdapter extends SimpleCursorAdapter {
     };
 ```
 //读取颜色数据
-int x = mCursor.getInt(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_BACK_COLOR));
-    /**
-    * 白 255 255 255
-    * 黄 247 216 133
-    * 蓝 165 202 237
-    * 绿 161 214 174
-    * 红 244 149 133
-    */
+```
+int x = mCursor.getInt(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_BACK_COLOR))
     switch (x){
         case NotePad.Notes.DEFAULT_COLOR:
             mText.setBackgroundColor(Color.rgb(255, 255, 255));
@@ -384,121 +378,6 @@ int x = mCursor.getInt(mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_BACK_COL
         NoteEditor.this.startActivity(intent);
     }
 ```
-在此之前，要对选择颜色界面进行布局，新建布局note_color.xml，垂直线性布局放置5个ImageButton，并创建NoteColor的Acitvity，用来选择颜色。在AndroidManifest.xml中将这个Acitvity主题定义为对话框样式：<br>
-```
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageButton
-        android:id="@+id/color_white"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:background="@color/colorWhite"
-        android:onClick="white"/>
-    <ImageButton
-        android:id="@+id/color_yellow"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:background="@color/colorYellow"
-        android:onClick="yellow"/>
-    <ImageButton
-        android:id="@+id/color_blue"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:background="@color/colorBlue"
-        android:onClick="blue"/>
-    <ImageButton
-        android:id="@+id/color_green"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:background="@color/colorGreen"
-        android:onClick="green"/>
-    <ImageButton
-        android:id="@+id/color_red"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:background="@color/colorRed"
-        android:onClick="red"/>
-</LinearLayout>
-```
-```
-public class NoteColor extends Activity {
-    private Cursor mCursor;
-    private Uri mUri;
-    private int color;
-    private static final int COLUMN_INDEX_TITLE = 1;
-    private static final String[] PROJECTION = new String[] {
-            NotePad.Notes._ID, // 0
-            NotePad.Notes.COLUMN_NAME_BACK_COLOR,
-    };
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_color);
-        //从NoteEditor传入的uri
-        mUri = getIntent().getData();
-        mCursor = managedQuery(
-                mUri,        // The URI for the note that is to be retrieved.
-                PROJECTION,  // The columns to retrieve
-                null,        // No selection criteria are used, so no where columns are needed.
-                null,        // No where columns are used, so no where values are needed.
-                null         // No sort order is needed.
-        );
-    }
-    @Override
-    protected void onResume(){
-    //执行顺序在onCreate之后
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-            color = mCursor.getInt(COLUMN_INDEX_TITLE);
-        }
-        super.onResume();
-    }
-    @Override
-    protected void onPause() {
-    //执行顺序在finish()之后，将选择的颜色存入数据库
-        super.onPause();
-        ContentValues values = new ContentValues();
-        values.put(NotePad.Notes.COLUMN_NAME_BACK_COLOR, color);
-        getContentResolver().update(mUri, values, null, null);
-    }
-    public void white(View view){
-        color = NotePad.Notes.DEFAULT_COLOR;
-        finish();
-    }
-    public void yellow(View view){
-        color = NotePad.Notes.YELLOW_COLOR;
-        finish();
-    }
-    public void blue(View view){
-        color = NotePad.Notes.BLUE_COLOR;
-        finish();
-    }
-    public void green(View view){
-        color = NotePad.Notes.GREEN_COLOR;
-        finish();
-    }
-    public void red(View view){
-        color = NotePad.Notes.RED_COLOR;
-        finish();
-    }
-
-}
-```
-```
-<!--换背景色-->
-<activity android:name="NoteColor"
-    android:theme="@android:style/Theme.Holo.Light.Dialog"
-    android:label="ChangeColor"
-    android:windowSoftInputMode="stateVisible"/>
-```
-
-选择菜单上的衣服图标：<br>
+选择菜单上的衣服标志，选择蓝色：<br>
 ![](assets/choicecolor.png)
-选择蓝色：<br>
 ![](assets/background.png)
