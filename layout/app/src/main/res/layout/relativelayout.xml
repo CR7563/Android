@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="red"
+        android:id="@+id/one_button"
+        android:background="@android:color/holo_red_light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="orange"
+        android:id="@+id/two_button"
+        android:background="@android:color/holo_orange_light"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dark"
+        android:id="@+id/three_button"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/four_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:layout_toLeftOf="@id/five_button"
+        android:background="#0f6"
+        android:text="green"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/five_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#0ff"
+        android:text="blue" />
+
+    <Button
+        android:id="@+id/six_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/five_button"
+        android:background="#051"
+        android:text="green"
+        android:layout_marginLeft="20dp" />
+
+    <Button
+        android:id="@+id/last_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        android:text="pink" />
+
+
+</RelativeLayout>
