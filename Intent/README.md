@@ -1,9 +1,9 @@
 # 实验六
 
-1. 首页
+1.输入URL网址，点击按钮
 
-![](assets/0.jpg)
+![](https://i.loli.net/2018/06/04/5b154d316e0f3.jpg)
 
-2. 调用浏览器
+2.选择自定义浏览器WebView Browser Tester
 
-![](assets/1.jpg)
+![](https://i.loli.net/2018/06/04/5b154e3f1fbe8.jpg)
