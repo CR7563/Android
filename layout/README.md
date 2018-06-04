@@ -7,3 +7,5 @@
 
 ## Linear layout
 ![](https://i.loli.net/2018/06/04/5b1532d9aa3d8.png)
+## relative layout
+![](https://i.loli.net/2018/04/07/5ac86838e4a40.png)
