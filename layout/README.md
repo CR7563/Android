@@ -4,3 +4,5 @@
 
 ## table layout
 ![](https://i.loli.net/2018/04/07/5ac867d3236fc.png)
+## LinearLayout
+![](https://i.loli.net/2018/06/04/5b152d060640f.png)
