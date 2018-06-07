@@ -1,13 +1,11 @@
 ﻿
-## 拓展功能
+## 基本功能
 - 显示条目增加时间显示
 - 笔记查询
-- UI美化
-- 背景更换
 
-## 拓展功能解析
+##————————
 
-- NotesList中显示条目增加时间显示
+-1、 NotesList中显示条目增加时间显示
 
 要在标题下方加时间显示，就要在标题的TextView下再加一个时间的TextView。但是由于原应用列表item只需要一个标题，所以不需要用上别的布局，多加一个时间TextView，就要把标题TextView和时间TextView放入垂直的线性布局。<br>
 由于要美化UI，所以将TextView原字体颜色改为黑色。新加的时间TextView字体大小小于标题TextView。
@@ -106,7 +104,7 @@ int[] viewIDs = { android.R.id.text1 , R.id.text1_time };
 运行效果：<br>
 ![](assets/time.png)
 
-- 笔记查询（按标题查询）
+- 2、笔记查询（按标题查询）
 
 要添加笔记查询功能，就要在应用中增加一个搜索的入口。找到菜单的xml文件，list_options_menu.xml，添加一个搜索的item，搜索图标用安卓自带的图标，设为总是显示：<br>
 ```
@@ -239,7 +237,9 @@ String[] selectionArgs = { "%"+newText+"%" };
 运行效果：<br>
 ![](assets/search1.png)
 ![](assets/search2.png)
-- UI美化
+
+##扩展功能
+- 1、UI美化
 
 先给NotesList换个主题，把黑色换成白色，在AndroidManifest.xml中NotesList的Activity中添加：<br>
 ```
@@ -319,7 +319,7 @@ public class MyCursorAdapter extends SimpleCursorAdapter {
 与背景结合彩色：<br>
 ![](assets/search2.png)
 
-- 背景更换
+/2、 背景更换
 
 背景更换指的是编辑笔记时的背景色更换。编辑笔记的Activity为NoteEditor。同样的，在PROJECTION中添加颜色项：<br>
 ```
