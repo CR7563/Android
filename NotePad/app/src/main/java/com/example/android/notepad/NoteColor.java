@@ -7,9 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-/**
- * Created by Administrator on 2017/5/18.
- */
+
 
 public class NoteColor extends Activity {
 
