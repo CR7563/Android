@@ -238,7 +238,8 @@ String[] selectionArgs = { "%"+newText+"%" };
 ![](assets/search1.png)
 ![](assets/search2.png)
 
-###扩展功能
+##扩展功能
+
 ##1、UI美化
 
 先给NotesList换个主题，把黑色换成白色，在AndroidManifest.xml中NotesList的Activity中添加：<br>
