@@ -1,18 +1,4 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */ 
+
 
 package com.example.android.notepad;
 
@@ -41,17 +27,7 @@ import android.widget.EditText;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * This Activity handles "editing" a note, where editing is responding to
- * {@link Intent#ACTION_VIEW} (request to view data), edit a note
- * {@link Intent#ACTION_EDIT}, create a note {@link Intent#ACTION_INSERT}, or
- * create a new note from the current contents of the clipboard {@link Intent#ACTION_PASTE}.
- *
- * NOTE: Notice that the provider operations in this Activity are taking place on the UI thread.
- * This is not a good practice. It is only done here to make the code more readable. A real
- * application should use the {@link android.content.AsyncQueryHandler}
- * or {@link android.os.AsyncTask} object to perform operations asynchronously on a separate thread.
- */
+
 public class NoteEditor extends Activity {
     // For logging and debugging purposes
     private static final String TAG = "NoteEditor";
@@ -83,9 +59,7 @@ public class NoteEditor extends Activity {
     private String mOriginalContent;
 
 
-    /**
-     * Defines a custom EditText View that draws lines between each line of text that is displayed.
-     */
+   
     public static class LinedEditText extends EditText {
         private Rect mRect;
         private Paint mPaint;
@@ -100,11 +74,7 @@ public class NoteEditor extends Activity {
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setColor(0x800000FF);
         }
-
-        /**
-         * This is called to draw the LinedEditText object
-         * @param canvas The canvas on which the background is drawn.
-         */
+        
         @Override
         protected void onDraw(Canvas canvas) {
 
@@ -115,19 +85,13 @@ public class NoteEditor extends Activity {
             Rect r = mRect;
             Paint paint = mPaint;
 
-            /*
-             * Draws one line in the rectangle for every line of text in the EditText
-             */
+           
             for (int i = 0; i < count; i++) {
 
                 // Gets the baseline coordinates for the current line of text
                 int baseline = getLineBounds(i, r);
 
-                /*
-                 * Draws a line in the background from the left of the rectangle to the right,
-                 * at a vertical position one dip below the baseline, using the "paint" object
-                 * for details.
-                 */
+              
                 canvas.drawLine(r.left, baseline + 1, r.right, baseline + 1, paint);
             }
 
@@ -136,10 +100,7 @@ public class NoteEditor extends Activity {
         }
     }
 
-    /**
-     * This method is called by Android when the Activity is first started. From the incoming
-     * Intent, it determines what kind of editing is desired, and then does it.
-     */
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,7 +151,8 @@ public class NoteEditor extends Activity {
             }
 
 
-            // Since the new entry was created, this sets the result to be returned
+         
+        mCursor = managedQuery( // Since the new entry was created, this sets the result to be returned
             // set the result to be returned.
             setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
 
@@ -204,15 +166,7 @@ public class NoteEditor extends Activity {
             return;
         }
 
-        /*
-         * Using the URI passed in with the triggering Intent, gets the note or notes in
-         * the provider.
-         * Note: This is being done on the UI thread. It will block the thread until the query
-         * completes. In a sample app, going against a simple provider based on a local database,
-         * the block will be momentary, but in a real app you should use
-         * android.content.AsyncQueryHandler or android.os.AsyncTask.
-         */
-        mCursor = managedQuery(
+       
             mUri,         // The URI that gets multiple notes from the provider.
             PROJECTION,   // A projection that returns the note ID and note content for each note.
             null,         // No "where" clause selection criteria.
@@ -231,7 +185,7 @@ public class NoteEditor extends Activity {
 
         // Sets the layout for this Activity. See res/layout/note_editor.xml
         setContentView(R.layout.note_editor);
-
+ 
         mCursor.moveToFirst();
         // Gets a handle to the EditText in the the layout.
         mText = (EditText) findViewById(R.id.note);
@@ -246,14 +200,7 @@ public class NoteEditor extends Activity {
         }
     }
 
-    /**
-     * This method is called when the Activity is about to come to the foreground. This happens
-     * when the Activity comes to the top of the task stack, OR when it is first starting.
-     *
-     * Moves to the first note in the list, sets an appropriate title for the action chosen by
-     * the user, puts the note contents into the TextView, and saves the original text as a
-     * backup.
-     */
+   
     @Override
     protected void onResume() {
         super.onResume();
