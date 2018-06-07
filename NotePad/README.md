@@ -238,8 +238,8 @@ String[] selectionArgs = { "%"+newText+"%" };
 ![](assets/search1.png)
 ![](assets/search2.png)
 
-##扩展功能
-- 1、UI美化
+###扩展功能
+##1、UI美化
 
 先给NotesList换个主题，把黑色换成白色，在AndroidManifest.xml中NotesList的Activity中添加：<br>
 ```
@@ -319,7 +319,9 @@ public class MyCursorAdapter extends SimpleCursorAdapter {
 与背景结合彩色：<br>
 ![](assets/search2.png)
 
-/2、 背景更换
+
+
+##2、 背景更换
 
 背景更换指的是编辑笔记时的背景色更换。编辑笔记的Activity为NoteEditor。同样的，在PROJECTION中添加颜色项：<br>
 ```
