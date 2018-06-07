@@ -14,10 +14,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
  
 
-/**
- * Created by Administrator on 2017/5/16.
- */
-
+ 
 public class OutputText extends Activity {
 
     private static final String[] PROJECTION = new String[] {
