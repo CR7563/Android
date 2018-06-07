@@ -12,9 +12,7 @@ import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 
  
-/**
- * Created by Administrator on 2017/5/10.
- */
+
 
 public class NoteSearch extends ListActivity  implements SearchView.OnQueryTextListener {
 
